@@ -1,3 +1,35 @@
+import random
+import string
+
+WORDLIST_FILENAME = "words.txt"
+GUESS = 6
+def load_words():
+    """
+    Returns a list of valid words. Words are strings of lowercase letters.
+    
+    Depending on the size of the word list, this function may
+    take a while to finish.
+    """
+    print("Loading word list from file...")
+    # inFile: file
+    inFile = open(WORDLIST_FILENAME, 'r')
+    # line: string
+    line = inFile.readline()
+    # wordlist: list of strings
+    wordlist = line.split()
+    print("  ", len(wordlist), "words loaded.")
+    return wordlist
+
+
+
+def choose_word(wordlist):
+    """
+    wordlist (list): list of words (strings)
+    
+    Returns a word from wordlist at random
+    """
+    return random.choice(wordlist)
+wordlist = load_words()
 def hangman(secret_word):
     '''
     secret_word: string, the secret word to guess.
@@ -27,6 +59,7 @@ def hangman(secret_word):
     guess_time = GUESS
     already_guessed = []
     correct = 0
+    letters_guessed=[]
     print('Welcome to the game Hangman!')
     print('I am thinking of a word that is',len(secret_word),'letters long.')
     while guess_time:
@@ -56,7 +89,13 @@ def hangman(secret_word):
             print('You win\n')
             return       
     print('You lose')
+    print('The secret word is',secret_word)
 # When you've completed your hangman function, scroll down to the bottom
 # of the file and uncomment the first two lines to test
 #(hint: you might want to pick your own
 # secret_word while you're doing your own testing)
+
+if __name__ == '__main__':
+    secret_word = choose_word(wordlist)
+    hangman(secret_word)
+    input()
