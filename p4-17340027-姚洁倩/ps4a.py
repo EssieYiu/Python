@@ -1,7 +1,7 @@
 # Problem Set 4A
-# Name: Essie Yiu
+# Name: 17340027 姚洁倩
 # Collaborators:None
-# Time Spent: 0:30
+# Time Spent:
 
 def get_permutations(sequence):
     permutation_of_current_string = []

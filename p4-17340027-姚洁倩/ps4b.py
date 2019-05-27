@@ -1,7 +1,7 @@
 # Problem Set 4B
-# Name: Essie Yiu
+# Name:17340027 姚洁倩
 # Collaborators:None
-# Time Spent: 1:30
+# Time Spent: 
 
 import string
 import copy
