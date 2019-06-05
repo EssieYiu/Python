@@ -26,7 +26,7 @@ class Node(object):
 
     def __eq__(self, other):
         return self.name == other.name
-
+            
     def __ne__(self, other):
         return not self.__eq__(other)
 
@@ -56,17 +56,17 @@ class Edge(object):
 class WeightedEdge(Edge):
     def __init__(self, src, dest, total_distance, outdoor_distance):
         Edge.__init__(self,src,dest)
-        self.total_dstance = total_distance
-        self.outdoor_distance = outdoor_distance
+        self.total_distance = int(total_distance)
+        self.outdoor_distance = int(outdoor_distance)
 
     def get_total_distance(self):
-        return self.total_dstance
+        return self.total_distance
 
     def get_outdoor_distance(self):
         return self.outdoor_distance
 
     def __str__(self):
-        return '{}->{} ({}, {})'.format(self.src,self.dest,self.total_dstance,self.outdoor_distance)
+        return '{}->{} ({}, {})'.format(self.src,self.dest,self.total_distance,self.outdoor_distance)
 
 class Digraph(object):
     """Represents a directed graph of Node and Edge objects"""
@@ -89,17 +89,12 @@ class Digraph(object):
         return node in self.nodes
 
     def add_node(self, node):
-        """Adds a Node object to the Digraph. Raises a ValueError if it is
-        already in the graph."""
         if self.has_node(node):
             raise ValueError("The node is already in the graph")
         self.nodes.add(node)
         
 
     def add_edge(self, edge):
-        """Adds an Edge or WeightedEdge instance to the Digraph. Raises a
-        ValueError if either of the nodes associated with the edge is not
-        in the  graph."""
         src = edge.get_source()
         dst = edge.get_destination()
         if src not in self.nodes or dst not in self.nodes:
